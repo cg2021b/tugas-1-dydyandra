@@ -12,13 +12,13 @@ tugas-1-dydyandra created by GitHub Classroom
 ### Benda yang Digunakan: Buku Flexibound
 
 ### Foto dari Belakang Atas
-<img src="images/belakang.jpg">
+<img src="images/belakang.jpg" width="400">
 
 ### Foto dari Depan Atas
-<img src="images/depan.jpg">
+<img src="images/depan.jpg" width="400">
 
 ### Foto dari Kiri Atas
-<img src="images/kiri.jpg">
+<img src="images/kiri.jpg" width="400">
 
 ### Foto dari Kanan Atas
-<img src="images/kanan.jpg">
+<img src="images/kanan.jpg" width="400">
