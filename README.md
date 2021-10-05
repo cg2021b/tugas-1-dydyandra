@@ -1,6 +1,8 @@
 # tugas-1-dydyandra
 tugas-1-dydyandra created by GitHub Classroom
 
+Hasil tugas dapat dilihat di [Link Tugas](https://cg2021b.github.io/tugas-1-dydyandra/)
+
 **Nama**: Dyandra Paramitha Widyadhana<br>
 **NRP**: 05111940000119
 
