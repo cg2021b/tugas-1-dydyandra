@@ -17,7 +17,7 @@ function gelasKiri(){
         let k = (i + 1 + 270) / 180;
 
         var vertex_1 = [
-            sin(j) * 0.270 - 0.5 , cos(j) * 0.05 + 0.5, // x and y 
+            sin(j) * 0.260 - 0.5 , cos(j) * 0.05 + 0.5, // x and y 
             0.88, 0.87, 0.87, // color
         ];
     
@@ -27,7 +27,7 @@ function gelasKiri(){
         ];
 
         var vertex_3 = [
-            sin(k) * 0.270 - 0.5 , cos(k) * 0.05 + 0.5, // x and y
+            sin(k) * 0.260 - 0.5 , cos(k) * 0.05 + 0.5, // x and y
             0.88, 0.87, 0.87, // color
         ];
 
@@ -173,7 +173,7 @@ function gelasKanan(){
         var j = (i + 270) / 180;
         var k = (i+ 271) / 180;
         var vertex_1 = [
-            sin(j) * 0.290 + 0.5 , cos(j) * 0.10 + 0.5, 
+            sin(j) * 0.270 + 0.5 , cos(j) * 0.10 + 0.5, 
             0.88, 0.87, 0.87,
         ];
     
@@ -183,7 +183,7 @@ function gelasKanan(){
         ];
     
         var vertex_3 = [
-            sin(k) * 0.290 + 0.5 , cos(k) * 0.10 + 0.5, 
+            sin(k) * 0.270 + 0.5 , cos(k) * 0.10 + 0.5, 
             0.88, 0.87, 0.87,
         ];
     
@@ -230,7 +230,7 @@ function gelasKanan(){
         var j = (i + 270) / 180;
         var k = (i+ 271) / 180;
         var vertex_1 = [
-            sin(j) * 0.280 + 0.5 , cos(j) * 0.10 + 0.5, 
+            sin(j) * 0.260 + 0.5 , cos(j) * 0.10 + 0.5, 
             0.78, 0.78, 0.78,
         ];
     
@@ -240,7 +240,7 @@ function gelasKanan(){
         ];
     
         var vertex_3 = [
-            sin(k) * 0.280 + 0.5 , cos(k) * 0.10 + 0.5, 
+            sin(k) * 0.260 + 0.5 , cos(k) * 0.10 + 0.5, 
             0.78, 0.78, 0.78,
         ];
     
@@ -253,7 +253,7 @@ function gelasKanan(){
         var j = (i + 180) / 180;
         var k = (i+ 181) / 180;
         var vertex_1 = [
-            sin(j) * 0.280 + 0.5 , cos(j) * 0.110 + 0.5, 
+            sin(j) * 0.260 + 0.5 , cos(j) * 0.110 + 0.5, 
             0.78, 0.78, 0.78,
         ];
     
@@ -263,7 +263,7 @@ function gelasKanan(){
         ];
     
         var vertex_3 = [
-            sin(k) * 0.280 + 0.5 , cos(k) * 0.110 + 0.5, 0.78, 0.78, 0.78,
+            sin(k) * 0.260 + 0.5 , cos(k) * 0.110 + 0.5, 0.78, 0.78, 0.78,
         ];
     
         kanan = kanan.concat(vertex_1, vertex_2, vertex_3);

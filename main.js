@@ -1,20 +1,14 @@
 function main(){
-    /** @type {HTMLCanvasElement} */
-    var canvas = document.getElementById('myCanvas');
-    /** @type {WebGLRenderingContext} */
-    var gl = canvas.getContext('webgl');
+    let canvas = document.getElementById('myCanvas');
+    let gl = canvas.getContext('webgl');
 
     var kiri = [];
-
     kiri = gelasKiri();
     
     var kanan = [];
-
     kanan = gelasKanan();
 
     var vertices = [...kiri, ...kanan]
-    var kiri_len = kiri.length / 5;
-    var kanan_len = kanan.length / 5;
 
     var buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -82,7 +76,13 @@ function main(){
     let dy = 0;
     let speed = 0.0119;
     function drawScene() {
-        if(dy >= 0.4 || dy <=-0.8) speed = -speed;
+        if (dy >= 0.4){
+            speed = -speed;
+        }
+        else if (dy <= -0.75){
+            speed = -speed;
+        }
+        else speed = speed;
         dy += speed;
         gl.useProgram(shaderProgram);
         const objekKiri = [
