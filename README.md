@@ -13,7 +13,7 @@ tugas-1-dydyandra created by GitHub Classroom
 1. Membuat sebuah aplikasi Grafika berbasis WebGL pada repo tugas
 2. Hasil tugas dapat dilihat di [Link Tugas](https://cg2021b.github.io/tugas-1-dydyandra/)
 
-### Benda yang Digunakan: Buku Flexibound
+### Benda yang Digunakan: Gelas
 
 ### Foto dari Belakang Atas
 <img src="images/atas.jpg" width="400">
