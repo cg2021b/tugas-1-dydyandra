@@ -13,6 +13,13 @@ tugas-1-dydyandra created by GitHub Classroom
 1. Membuat sebuah aplikasi Grafika berbasis WebGL pada repo tugas
 2. Hasil tugas dapat dilihat di [Link Tugas](https://cg2021b.github.io/tugas-1-dydyandra/)
 
+## Penugasan 2
+1. Membuat dan menampilkan beberapa geometri dan diberi animasi, beberapa obyek ditampilkan wireframe
+2. Menggunakan beberapa jenis material 
+3. Menggunakan beberapa jenis lighting (AmbientLight, HemisphereLight, DirectionalLight, PointLight, Spotlights)
+Hasil tugas dapat dilihat di [Link Tugas](https://cg2021b.github.io/tugas-1-dydyandra/mencoba%20three%20js/)
+
+
 ### Benda yang Digunakan: Gelas
 
 ### Foto dari Belakang Atas
