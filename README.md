@@ -20,6 +20,12 @@ tugas-1-dydyandra created by GitHub Classroom
 
 Hasil tugas dapat dilihat di [Link Tugas](https://cg2021b.github.io/tugas-1-dydyandra/mencoba%20three%20js/)
 
+## Penugasan 3
+Buat obyek baru yang muncul diposisi dan warna secara random yang semakin lama semakin cepat, Berhenti tambah obyek baru jika jumlah obyek sudah mencapai batas tertentu. Pilih 2 obyek pasangan yang memiliki warna yang sama. Jika 2 obyek pasangan sudah terpilih, hapus obyek tersebut dan tambah skor
+
+
+Hasil tugas dapat dilihat di [Link Tugas](https://cg2021b.github.io/tugas-1-dydyandra/task-3-grafkomb/)
+
 
 ### Benda yang Digunakan: Gelas
 
