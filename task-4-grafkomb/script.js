@@ -79,6 +79,7 @@ scene.add(camera);
 const controls = new OrbitControls(camera, canvas);
 controls.autoRotate = true;
 
+
 /**
  * Renderer
  */
@@ -175,6 +176,40 @@ loader.load('./model/scene.gltf', function(gltf){
         const root = gltf.scene;
         root.position.x = 0;
         root.position.y = -5;
+        scene.add(root);
+        // console.log(dumpObject(root).join('\n'));
+
+        root.traverse(n => { if ( n.isMesh ) {
+          n.castShadow = true; 
+          n.receiveShadow = true;
+        }});
+
+})
+
+const treeLoader = new GLTFLoader()
+treeLoader.load('./model-tree/scene.gltf', function(gltf){
+        const root = gltf.scene;
+        root.position.x = 10;
+        root.position.y = -5;
+        root.position.z = 8;
+        gltf.scene.scale.set(0.01, 0.01, 0.01); 
+        scene.add(root);
+        // console.log(dumpObject(root).join('\n'));
+
+        root.traverse(n => { if ( n.isMesh ) {
+          n.castShadow = true; 
+          n.receiveShadow = true;
+        }});
+
+})
+
+const treeLoader2 = new GLTFLoader()
+treeLoader2.load('./model-tree/scene.gltf', function(gltf){
+        const root = gltf.scene;
+        root.position.x = 13;
+        root.position.y = -5;
+        root.position.z = 7;
+        gltf.scene.scale.set(0.007, 0.007, 0.007); 
         scene.add(root);
         // console.log(dumpObject(root).join('\n'));
 
