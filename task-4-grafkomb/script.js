@@ -3,6 +3,7 @@ import {OrbitControls} from './js/OrbitControls.js';
 import {GLTFLoader} from './js/GLTFLoader.js';
 import {Reflector} from './jsm/objects/Reflector.js';
 import * as dat from './jsm/libs/dat.gui.module.js'
+import {DragControls} from './js/DragControls.js';
 
 class FogGUIHelper {
   constructor(fog, backgroundColor) {
@@ -289,6 +290,30 @@ mirrorBall.position.y = 3;
 mirrorBall.position.x = -3;
 scene.add(mirrorBall);
 
+
+const dragGeo = new THREE.BoxGeometry()
+const dragMaterial = [
+  new THREE.MeshPhongMaterial({ color: 0xff0000, transparent: true }),
+  new THREE.MeshPhongMaterial({ color: 0x00ff00, transparent: true }),
+  new THREE.MeshPhongMaterial({ color: 0x0000ff, transparent: true })
+]
+
+const cubes = [
+  new THREE.Mesh(dragGeo, dragMaterial[0]),
+  new THREE.Mesh(dragGeo, dragMaterial[1]),
+  new THREE.Mesh(dragGeo, dragMaterial[2])
+]
+cubes[0].position.set(0,-4.5,10)
+cubes[1].position.set(3,-4.5,10)
+cubes[2].position.set(5,-4.5,10)
+cubes.forEach((c) => scene.add(c))
+
+const dragControls = new DragControls(cubes, camera, canvas)
+
+dragControls.addEventListener( 'dragstart', function () { controls.enabled = false; } );
+dragControls.addEventListener( 'dragend', function () { controls.enabled = true; } );
+
+renderer.render(scene, camera, dragControls);
 
 /**
  * Object: Mirror
