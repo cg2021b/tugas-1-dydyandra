@@ -1,7 +1,7 @@
 import * as THREE from './js/three.module.js';
-import {OrbitControls} from '/js/OrbitControls.js';
-import {GLTFLoader} from '/js/GLTFLoader.js';
-import {Reflector} from '/jsm/objects/Reflector.js';
+import {OrbitControls} from './js/OrbitControls.js';
+import {GLTFLoader} from './js/GLTFLoader.js';
+import {Reflector} from './jsm/objects/Reflector.js';
 
 
 // Canvas
