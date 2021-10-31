@@ -2,6 +2,35 @@ import * as THREE from './js/three.module.js';
 import {OrbitControls} from './js/OrbitControls.js';
 import {GLTFLoader} from './js/GLTFLoader.js';
 import {Reflector} from './jsm/objects/Reflector.js';
+import * as dat from './jsm/libs/dat.gui.module.js'
+
+class FogGUIHelper {
+  constructor(fog, backgroundColor) {
+    this.fog = fog;
+    this.backgroundColor = backgroundColor;
+  }
+  get near() {
+    return this.fog.near;
+  }
+  set near(v) {
+    this.fog.near = v;
+    this.fog.far = Math.max(this.fog.far, v);
+  }
+  get far() {
+    return this.fog.far;
+  }
+  set far(v) {
+    this.fog.far = v;
+    this.fog.near = Math.min(this.fog.near, v);
+  }
+  get color() {
+    return `#${this.fog.color.getHexString()}`;
+  }
+  set color(hexString) {
+    this.fog.color.set(hexString);
+    this.backgroundColor.set(hexString);
+  }
+}
 
 
 // Canvas
@@ -10,6 +39,8 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene();
 
+// Dat GUI
+const gui = new dat.GUI()
 
 /**
  * Sizes
@@ -181,6 +212,18 @@ solarLight.shadow.camera.top = intensity;
 solarLight.shadow.camera.bottom  = -intensity;
 scene.add(solarLight);
 
+// directional light helper
+const directionalLightHelper = new THREE.DirectionalLightHelper(solarLight);
+scene.add(directionalLightHelper);
+
+const directionalLightFolder = gui.addFolder('Directional Light');
+directionalLightFolder.add(solarLight, 'visible');
+directionalLightFolder.add(solarLight.position, 'x').min(-500).max(500).step(10);
+directionalLightFolder.add(solarLight.position, 'y').min(-500).max(500).step(10);
+directionalLightFolder.add(solarLight.position, 'z').min(-500).max(500).step(10);
+directionalLightFolder.add(solarLight, 'intensity').min(0).max(10).step(0.1);
+const directionalLightHelperFolder = directionalLightFolder.addFolder('Directional Light Helper');
+directionalLightHelperFolder.add(directionalLightHelper, 'visible');
 
 /**
  * Fog
@@ -190,6 +233,12 @@ const near = 20;
 const far = 70;
 const color = 'lightblue';
 scene.fog = new THREE.Fog(color, near, far);
+
+// fog helper
+const fogGUIHelper = new FogGUIHelper(scene.fog, scene.background);
+gui.add(fogGUIHelper, 'near', near, far).listen();
+gui.add(fogGUIHelper, 'far', near, far).listen();
+gui.addColor(fogGUIHelper, 'color');
 
 /**
  * Object: Reflective Sphere
