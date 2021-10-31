@@ -26,6 +26,11 @@ Buat obyek baru yang muncul diposisi dan warna secara random yang semakin lama s
 
 Hasil tugas dapat dilihat di [Link Tugas](https://cg2021b.github.io/tugas-1-dydyandra/task-3-grafkomb/)
 
+## Penugasan 4
+Mencoba menggunakan control, texture, panorama, shadow, fog, loading model, dan realistic reflective
+
+Hasil tugas dapat dilihat di [Link Tugas](https://cg2021b.github.io/tugas-1-dydyandra/task-4-grafkomb/)
+
 
 ### Benda yang Digunakan: Gelas
 
