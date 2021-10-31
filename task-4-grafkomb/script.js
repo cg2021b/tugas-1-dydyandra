@@ -213,8 +213,7 @@ solarLight.shadow.camera.bottom  = -intensity;
 scene.add(solarLight);
 
 // directional light helper
-const directionalLightHelper = new THREE.DirectionalLightHelper(solarLight);
-scene.add(directionalLightHelper);
+
 
 const directionalLightFolder = gui.addFolder('Directional Light');
 directionalLightFolder.add(solarLight, 'visible');
@@ -222,8 +221,7 @@ directionalLightFolder.add(solarLight.position, 'x').min(-500).max(500).step(10)
 directionalLightFolder.add(solarLight.position, 'y').min(-500).max(500).step(10);
 directionalLightFolder.add(solarLight.position, 'z').min(-500).max(500).step(10);
 directionalLightFolder.add(solarLight, 'intensity').min(0).max(10).step(0.1);
-const directionalLightHelperFolder = directionalLightFolder.addFolder('Directional Light Helper');
-directionalLightHelperFolder.add(directionalLightHelper, 'visible');
+
 
 /**
  * Fog
