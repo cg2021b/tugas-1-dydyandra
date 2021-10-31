@@ -76,7 +76,7 @@ camera.position.y = 10;
 camera.position.z = 20;
 scene.add(camera);
 
-// Controls
+// orbit controls
 const controls = new OrbitControls(camera, canvas);
 controls.autoRotate = true;
 
@@ -95,18 +95,17 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.gammaOutput = true;
 
 
-
 /**
  * Panorama 
  */
 const panorama = new THREE.CubeTextureLoader();
 const textureSun = panorama.load([
-  'sun-texture/px.png',
-  'sun-texture/nx.png',
-  'sun-texture/py.png',
-  'sun-texture/ny.png',
-  'sun-texture/pz.png',
-  'sun-texture/nz.png',
+  'sky-map/px.png',
+  'sky-map/nx.png',
+  'sky-map/py.png',
+  'sky-map/ny.png',
+  'sky-map/pz.png',
+  'sky-map/nz.png',
 
 ]);
 scene.background = textureSun;
@@ -154,19 +153,19 @@ plane.receiveShadow = true;
 scene.add(plane);
 
 /**
- * SceneGraph
+ * for debug
  */ 
-function dumpObject(obj, lines = [], isLast = true, prefix = '') {
-    const localPrefix = isLast ? '└─' : '├─';
-    lines.push(`${prefix}${prefix ? localPrefix : ''}${obj.name || '*no-name*'} [${obj.type}]`);
-    const newPrefix = prefix + (isLast ? '  ' : '│ ');
-    const lastNdx = obj.children.length - 1;
-    obj.children.forEach((child, ndx) => {
-      const isLast = ndx === lastNdx;
-      dumpObject(child, lines, isLast, newPrefix);
-    });
-    return lines;
-  }
+// function dumpObject(obj, lines = [], isLast = true, prefix = '') {
+//     const localPrefix = isLast ? '└─' : '├─';
+//     lines.push(`${prefix}${prefix ? localPrefix : ''}${obj.name || '*no-name*'} [${obj.type}]`);
+//     const newPrefix = prefix + (isLast ? '  ' : '│ ');
+//     const lastNdx = obj.children.length - 1;
+//     obj.children.forEach((child, ndx) => {
+//       const isLast = ndx === lastNdx;
+//       dumpObject(child, lines, isLast, newPrefix);
+//     });
+//     return lines;
+//   }
 
 /**
  * Object: GLTF
@@ -231,32 +230,30 @@ scene.add(pointLight);
 const ambientLight = new THREE.AmbientLight(0x000000);
 scene.add(ambientLight);
 
-const solarLight = new THREE.DirectionalLight();
-solarLight.position.set(500, 500, -500);
-solarLight.castShadow = true;
-solarLight.intensity = 2;
-solarLight.shadow.mapSize.width = 1024;
-solarLight.shadow.mapSize.height = 1024;
-solarLight.shadow.camera.near = 250;
-solarLight.shadow.camera.far = 1000;
+const directionalLight = new THREE.DirectionalLight();
+directionalLight.position.set(500, 500, -500);
+directionalLight.castShadow = true;
+directionalLight.intensity = 2;
+directionalLight.shadow.mapSize.width = 1024;
+directionalLight.shadow.mapSize.height = 1024;
+directionalLight.shadow.camera.near = 250;
+directionalLight.shadow.camera.far = 1000;
 
 let intensity=50;
 
-solarLight.shadow.camera.left = -intensity;
-solarLight.shadow.camera.right = intensity;
-solarLight.shadow.camera.top = intensity;
-solarLight.shadow.camera.bottom  = -intensity;
-scene.add(solarLight);
+directionalLight.shadow.camera.left = -intensity;
+directionalLight.shadow.camera.right = intensity;
+directionalLight.shadow.camera.top = intensity;
+directionalLight.shadow.camera.bottom  = -intensity;
+scene.add(directionalLight);
 
 // directional light helper
-
-
 const directionalLightFolder = gui.addFolder('Directional Light');
-directionalLightFolder.add(solarLight, 'visible');
-directionalLightFolder.add(solarLight.position, 'x').min(-500).max(500).step(10);
-directionalLightFolder.add(solarLight.position, 'y').min(-500).max(500).step(10);
-directionalLightFolder.add(solarLight.position, 'z').min(-500).max(500).step(10);
-directionalLightFolder.add(solarLight, 'intensity').min(0).max(10).step(0.1);
+directionalLightFolder.add(directionalLight, 'visible');
+directionalLightFolder.add(directionalLight.position, 'x').min(-500).max(500).step(10);
+directionalLightFolder.add(directionalLight.position, 'y').min(-500).max(500).step(10);
+directionalLightFolder.add(directionalLight.position, 'z').min(-500).max(500).step(10);
+directionalLightFolder.add(directionalLight, 'intensity').min(0).max(10).step(0.1);
 
 
 /**
@@ -279,7 +276,7 @@ gui.addColor(fogGUIHelper, 'color');
  */
 const cubeRenderTarget = new THREE.WebGLCubeRenderTarget( 128, { format: THREE.RGBFormat, generateMipmaps: true, minFilter: THREE.LinearMipmapLinearFilter } );
 let sphereCamera = new THREE.CubeCamera(1,500,cubeRenderTarget);
-sphereCamera.position.set(0, 3, 0);
+sphereCamera.position.set(-3, 3, 0);
 scene.add(sphereCamera);
 const sphereMirror = new THREE.MeshBasicMaterial({
   envMap: sphereCamera.renderTarget.texture,
@@ -289,6 +286,10 @@ const mirrorBall = new THREE.Mesh( sphereGeo, sphereMirror);
 mirrorBall.position.y = 3;
 mirrorBall.position.x = -3;
 scene.add(mirrorBall);
+
+/**
+ * Drag Controls
+ */
 
 
 const dragGeo = new THREE.BoxGeometry()
